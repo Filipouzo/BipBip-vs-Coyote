@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="index,follow">
+    <!-- fonts Tempus sans ITC -->
+    <link href="//db.onlinewebfonts.com/c/261506be3344b3806eefa054f0f6fbf1?family=Tempus+Sans+ITC" rel="stylesheet" type="text/css"/>
+    <!-- Optimisation mobile  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <!-- lien Font Awesome Icon  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- lien Bootstraps  -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- lien feuille de style  -->
+    <link rel="stylesheet" href="./style.css">
+    
+    <title>BipBip & Coyote</title>
+    <meta name="description" content="Jeu de dés sur le thème BeepBeep & Sonic" />
+  </head>
+      
+  <body class="vh-100 m-0">
+
+    <!-- Image de fond -->
+    <img id="background" src="./pictures/background.jpg">
+
+    <!-- Titre et Menu -->
+    <header class="row m-0 h-25">
+      <div class="col-10 col-md-7 col-lg-5 mx-auto p-0 h-100">
+        <div class="row m-0 h-50">
+          <img id="title" class="col" src="./pictures/Titre.png">
+        </div>
+        <div class="row h-25 align-content-around custom-line m-0 align-items-end">
+          <input type="image" id="rules" class="col h-75 panneau" data-toggle="modal" data-target="#popupRules" src="./pictures/gameRules.png">
+          <input onclick="startNewGame()" type="image" id="NewGame" class="col h-75 panneau" src="./pictures/newGame.png">
+          <input onclick="toggleSound()" type="image" id="soundOff" class="col h-75 panneau" src="./pictures/soundOn.png">
+        </div>
+      </div>
+    </header>
+
+    <!-- Popup Règles du jeu -->
+    <div class="modal fade" id="popupRules">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <p> Règles du jeu </p>
+          </div>
+          <div class="modal-body">
+            <p>Ce jeu se joue à deux. Un joueur est représenté par BeepBeep, l'autre par Sonic. Le gagnant est celui qui aura atteint le premier la ligne d'arrivée.</p>
+            <p>Pour cela, lancez le dés autant de fois que vous le voulez pour gagner en energie.</p>
+            <p>Mais attention ! si le dés tombe sur 1, vous perdez toute votre énergie et vous passez votre tour !</p>
+            <p>Soyez futé et cliquez sur  <strong><em>Go!</em></strong> au bon moment ! Vous avancerez alors proportionnelement à l'énergie accumulée, puis ce sera à votre adversaire de jouer.</p>
+            <p>A vous de jouer !</p>
+          </div>
+                  
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer
+            </button>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- zone de commande jeu -->
+    <div class="row h-50 m-0">
+      <div class="col-11 col-md-10 col-lg-8 mx-auto p-0 h-100">
+        <div class="row h-100 m-0">
+
+        <!-- zone roadRunner -->
+        <div class="col h-100 m-0">
+          <!-- Image du joueur -->
+          <div class="row h-50">
+            <img class="h-100 mx-auto d-block" src=".\pictures\RoadRunner\beepbeep.png" alt="RoadRunner">
+          </div>
+          <!-- Bouton lancer & compte d'Energie -->
+          <div class="row h-25 p-2">
+            <button type="button" class="sfont btn btn-primary position-relative mx-auto">Lancer
+              <span class="position-absolute top-0 start-100 badge rounded-pill bg-success">energie =
+                <span class="visually-hidden">0</span>
+              </span>
+            </button>
+          </div>
+          <!-- Bouton Go! & Score -->
+          <div class="row h-25 p-2">
+            <button type="button" class="sfont btn btn-primary position-relative mx-auto">Go!
+              <span class="position-absolute top-0 start-100 badge rounded-pill bg-danger">Score =
+                <span class="visually-hidden">0</span>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- zone Sonic-->
+        <div class="col h-100 m-0">
+          <!-- Image du joueur -->
+          <div class="row h-50 ">
+            <img class="h-100 mx-auto d-block" src=".\pictures\Sonic\sonic.png" alt="Sonic">
+          </div>
+          <!-- Bouton lancer & compte d'Energie -->
+          <div class="row h-25 p-2">
+            <button type="button" class="sfont btn btn-primary position-relative mx-auto" disabled>Lancer
+              <span class="position-absolute top-0 start-100 badge rounded-pill bg-success">energie =
+                <span class="visually-hidden">0</span>
+              </span>
+            </button>
+          </div>
+          <!-- Bouton Go! & Score -->
+          <div class="row h-25 p-2">
+            <button type="button" class="sfont btn btn-primary position-relative mx-auto" disabled>Go!
+              <span class="position-absolute top-0 start-100 badge rounded-pill bg-danger">Score =
+                <span class="visually-hidden">0</span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- zone de lancé de dés
+    <div class="row h-25 m-0 footer">
+      <div class="col-11 col-md-8 col-lg-5 mx-auto p-0">
+      </div>
+    </div> -->
+
+    <!-- zone évolution du jeu -->
+    <footer class="row h-25 w-100 m-0">
+      <div class="col-11 h-100 m-0">
+        <div id="iconRoadRunner" class="row  h-50 m-0 icon">
+          <img class="h-75 align-self-center" src=".\pictures\RoadRunner\beepbeep.png" alt="Sonic">
+        </div>
+        <div id="iconSonic" class="row h-50 m-0 icon">
+          <img class="h-75 align-self-center" src=".\pictures\Sonic\sonic.png" alt="Sonic">
+        </div>
+      </div>
+    </footer>
+
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+    <!-- Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <!-- bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script src="script.js"></script>
+  </body>
+</html>
