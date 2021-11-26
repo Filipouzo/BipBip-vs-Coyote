@@ -59,8 +59,9 @@ function startNewGame() {
   roadRunner.reset();
   sonic.reset();
   $('.popup').addClass('invisible');
-  playSound('newGame','newGame');
   // ! couper le son en cours
+  playSound('newGame','newGame');
+  // ! effecer le dés
 }
 
 
