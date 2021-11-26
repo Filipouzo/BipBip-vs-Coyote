@@ -31,9 +31,9 @@
           <img id="title" class="col" src="./pictures/Titre.png">
         </div>
         <div class="row h-25 align-content-around custom-line m-0 align-items-end">
-          <input type="image" id="rules" class="col h-75 panneau" data-toggle="modal" data-target="#popupRules" src="./pictures/gameRules.png">
-          <input onclick="startNewGame()" type="image" id="NewGame" class="col h-75 panneau" src="./pictures/newGame.png">
-          <input onclick="toggleSound()" type="image" id="soundOff" class="col h-75 panneau" src="./pictures/soundOn.png">
+          <input type="image" id="rules" class="col h-100 p-1 p-md-2" data-toggle="modal" data-target="#popupRules" src="./pictures/gameRules.png">
+          <input onclick="startNewGame()" type="image" id="NewGame" class="col h-100 p-1 p-md-2" src="./pictures/newGame.png">
+          <input onclick="toggleSound()" type="image" id="soundOff" class="col h-100 p-1 p-md-2" src="./pictures/soundOn.png">
         </div>
       </div>
     </header>
@@ -52,7 +52,6 @@
             <p>Soyez futé et cliquez sur  <strong><em>Go!</em></strong> au bon moment ! Vous avancerez alors proportionnelement à l'énergie accumulée, puis ce sera à votre adversaire de jouer.</p>
             <p>A vous de jouer !</p>
           </div>
-                  
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer
             </button>
@@ -63,8 +62,21 @@
 
     <!-- zone de commande jeu -->
     <div class="row h-50 m-0">
-      <div class="col-11 col-md-10 col-lg-8 mx-auto h-100 m-0 p-0">
+      <div class="col-11 col-md-10 col-lg-7 mx-auto h-100 m-0 p-0">
         <div class="row h-100 m-0">
+          
+          <!-- Image du dés -->
+          <img class="dice" id="diceDisplay" src="./pictures/dice/dice1.png">
+
+          <!-- <div id="displayDices" class="bg-success popup align-items-center justify-content-center">
+
+            <img class="mx-auto" style="height:100px; width:100px" src="./pictures/dice/dice1.png">
+          </div> -->
+
+
+          <!-- Video de victoire -->
+          <img class="popup invisible" id="winnerVideo_roadRunner" src=".\pictures\roadRunner\roadRunner_winn.gif">
+          <img class="popup invisible" id="winnerVideo_sonic" src=".\pictures\Sonic\sonic_winn.gif">
 
         <!-- zone roadRunner -->
         <div class="col h-100 m-0">
@@ -74,18 +86,14 @@
           </div>
           <!-- Bouton lancer & compte d'Energie -->
           <div class="row h-25 m-0 p-2">
-            <button type="button" class="h-75 sfont btn btn-primary position-relative mx-auto">Lancer
-              <span class="position-absolute top-0 start-100 badge rounded-pill bg-success">energie =
-                <span class="visually-hidden">0</span>
-              </span>
+            <button type="button" id="roll_roadRunner" class="h-75 sfont btn btn-primary position-relative mx-auto">Lancer
+              <span id="power_roadRunner" class="position-absolute top-0 start-100 badge rounded-pill bg-success">energie = 0</span>
             </button>
           </div>
           <!-- Bouton Go! & Score -->
           <div class="row h-25 m-0 p-2">
-            <button type="button" class="h-75 sfont btn btn-primary position-relative mx-auto">Go!
-              <span class="position-absolute top-0 start-100 badge rounded-pill bg-danger">Score =
-                <span class="visually-hidden">0</span>
-              </span>
+            <button type="button" id="secure_roadRunner" class="h-75 sfont btn btn-primary position-relative mx-auto">Go!
+              <span id="score_roadRunner" class="position-absolute top-0 start-100 badge rounded-pill bg-danger">Score = 0</span>
             </button>
           </div>
         </div>
@@ -98,23 +106,21 @@
           </div>
           <!-- Bouton lancer & compte d'Energie -->
           <div class="row h-25 m-0 p-2">
-            <button type="button" class="h-75 sfont btn btn-primary position-relative mx-auto" disabled>Lancer
-              <span class="position-absolute top-0 start-100 badge rounded-pill bg-success">energie =
-                <span class="visually-hidden">0</span>
-              </span>
+            <button type="button" id="roll_sonic" class="h-75 sfont btn btn-primary position-relative mx-auto" disabled>Lancer
+              <span id="power_sonic" class="position-absolute top-0 start-100 badge rounded-pill bg-success">Energie = 0</span>
             </button>
           </div>
           <!-- Bouton Go! & Score -->
           <div class="row h-25 m-0 p-2">
-            <button type="button" class="h-75 sfont btn btn-primary position-relative mx-auto" disabled>Go!
-              <span class="position-absolute top-0 start-100 badge rounded-pill bg-danger">Score =
-                <span class="visually-hidden">0</span>
-              </span>
+            <button type="button" id="secure_sonic" class="h-75 sfont btn btn-primary position-relative mx-auto" disabled>Go!
+              <span id="score_sonic" class="position-absolute top-0 start-100 badge rounded-pill bg-danger">Score = 0</span>
             </button>
           </div>
         </div>
       </div>
     </div>
+
+
   </div>
 
     <!-- zone de lancé de dés
@@ -126,10 +132,10 @@
     <!-- zone évolution du jeu -->
     <footer class="row h-25 m-0">
       <div class="col-11 h-100 m-0">
-        <div id="iconRoadRunner" class="row  h-50 m-0 icon">
+        <div id="icon_roadRunner" class="row  h-50 m-0 icon">
           <img class="h-75 align-self-center" src=".\pictures\RoadRunner\beepbeep.png" alt="Sonic">
         </div>
-        <div id="iconSonic" class="row h-50 m-0 icon">
+        <div id="icon_sonic" class="row h-50 m-0 icon">
           <img class="h-75 align-self-center" src=".\pictures\Sonic\sonic.png" alt="Sonic">
         </div>
       </div>
@@ -137,14 +143,16 @@
 
 
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script> -->
     <!-- Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <!-- bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-    <script src="script.js"></script>
+    <script src="./js/script.js"></script>
   </body>
 </html>
