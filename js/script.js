@@ -87,6 +87,7 @@ function displayWinner(playerName) {
 
 function playSound(playerName,event){
   // if(sound_on){
+  audio. crossOrigin = 'anonyme' ;
     new Audio('./sounds/'+playerName+'/'+event+'.mp3').play();
   // }
 }
