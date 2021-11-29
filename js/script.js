@@ -115,3 +115,4 @@ function toggleSound() {
     console.log($('.sound').attr('id'));
   };
 }
+

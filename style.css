@@ -1,13 +1,5 @@
-/* font Tempus sans ITC */
-/* @font-face {
-  font-family: "Tempus Sans ITC"; 
-  src: url("//db.onlinewebfonts.com/t/261506be3344b3806eefa054f0f6fbf1.eot"); 
-  src: url("//db.onlinewebfonts.com/t/261506be3344b3806eefa054f0f6fbf1.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/261506be3344b3806eefa054f0f6fbf1.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/261506be3344b3806eefa054f0f6fbf1.woff") format("woff"), url("//db.onlinewebfonts.com/t/261506be3344b3806eefa054f0f6fbf1.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/261506be3344b3806eefa054f0f6fbf1.svg#Tempus Sans ITC") format("svg"); 
-} */
 
-/* body{
-  font-family: Tempus Sans ITC,Arial, Helvetica, sans-serif;
-} */
+
 
 
 /* Font diiférente sur les boutons mais pas sur le badge : rock_boulderregular-Font */
@@ -75,4 +67,8 @@ button {
   top: 20%;
   width: 15%;
   /* z-index: 2; */
+}
+
+selector { 
+  cursor: none; 
 }
