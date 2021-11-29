@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="robots" content="index,follow">
+    <link rel="shortcut icon" href="#">
+
     <!-- fonts Tempus sans ITC -->
     <link href="//db.onlinewebfonts.com/c/261506be3344b3806eefa054f0f6fbf1?family=Tempus+Sans+ITC" rel="stylesheet" type="text/css"/>
+
     <!-- Optimisation mobile  -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <!-- lien Font Awesome Icon  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!-- lien Bootstraps  -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <!-- lien feuille de style  -->
@@ -33,7 +35,7 @@
         <div class="row h-25 align-content-around custom-line m-0 align-items-end">
           <input type="image" id="rules" class="col h-100 p-1 p-md-2" data-toggle="modal" data-target="#popupRules" src="./pictures/gameRules.png">
           <input onclick="startNewGame()" type="image" id="NewGame" class="col h-100 p-1 p-md-2" src="./pictures/newGame.png">
-          <input onclick="toggleSound()" type="image" id="soundOff" class="col h-100 p-1 p-md-2" src="./pictures/soundOn.png">
+          <input onclick="toggleSound()" type="image" id="soundOn" class="sound col h-100 p-1 p-md-2" src="./pictures/soundOn.png">
         </div>
       </div>
     </header>
@@ -69,8 +71,8 @@
           <img class="dice" id="diceDisplay" src="./pictures/dice/dice1.png">
 
           <!-- Video de victoire -->
-          <img class="popup invisible m-0" id="winnerVideo_roadRunner" src="./pictures/roadRunner/roadRunner_winn.gif">
-          <img class="popup invisible m-0" id="winnerVideo_sonic" src="./pictures/Sonic/sonic_winn.gif">
+          <img class="popup invisible m-0" id="winnerVideo_roadRunner" src="./pictures/roadRunner/roadRunner_win.gif">
+          <img class="popup invisible m-0" id="winnerVideo_sonic" src="./pictures/Sonic/sonic_win.gif">
 
         <!-- zone roadRunner -->
         <div class="col h-100 m-0">
@@ -81,13 +83,13 @@
           <!-- Bouton lancer & compte d'Energie -->
           <div class="row h-25 m-0 p-2">
             <button type="button" id="roll_roadRunner" class="h-75 sfont btn btn-primary position-relative mx-auto">Lancer
-              <span id="power_roadRunner" class="position-absolute top-0 start-100 badge rounded-pill bg-success">energie = 0</span>
+              <span id="power_roadRunner" class="position-absolute top-0 start-100 badge rounded-pill bg-success">Energie : 0</span>
             </button>
           </div>
           <!-- Bouton Go! & Score -->
           <div class="row h-25 m-0 p-2">
             <button type="button" id="secure_roadRunner" class="h-75 sfont btn btn-primary position-relative mx-auto">Go!
-              <span id="score_roadRunner" class="position-absolute top-0 start-100 badge rounded-pill bg-danger">Score = 0</span>
+              <span id="score_roadRunner" class="position-absolute top-0 start-100 badge rounded-pill bg-danger">Score : 0</span>
             </button>
           </div>
         </div>
@@ -101,13 +103,13 @@
           <!-- Bouton lancer & compte d'Energie -->
           <div class="row h-25 m-0 p-2">
             <button type="button" id="roll_sonic" class="h-75 sfont btn btn-primary position-relative mx-auto" disabled>Lancer
-              <span id="power_sonic" class="position-absolute top-0 start-100 badge rounded-pill bg-success">Energie = 0</span>
+              <span id="power_sonic" class="position-absolute top-0 start-100 badge rounded-pill bg-success">Energie : 0</span>
             </button>
           </div>
           <!-- Bouton Go! & Score -->
           <div class="row h-25 m-0 p-2">
             <button type="button" id="secure_sonic" class="h-75 sfont btn btn-primary position-relative mx-auto" disabled>Go!
-              <span id="score_sonic" class="position-absolute top-0 start-100 badge rounded-pill bg-danger">Score = 0</span>
+              <span id="score_sonic" class="position-absolute top-0 start-100 badge rounded-pill bg-danger">Score : 0</span>
             </button>
           </div>
         </div>
@@ -127,10 +129,10 @@
     <footer class="row h-25 m-0">
       <div class="col-11 h-100 m-0">
         <div id="icon_roadRunner" class="row  h-50 m-0 icon">
-          <img class="h-75 align-self-center" src="./pictures/RoadRunner/beepbeep.png" alt="Sonic">
+          <img class="h-50 align-self-center" src="./pictures/RoadRunner/roadRunner_run.png" alt="Sonic">
         </div>
         <div id="icon_sonic" class="row h-50 m-0 icon">
-          <img class="h-75 align-self-center" src="./pictures/Sonic/sonic.png" alt="Sonic">
+          <img class="h-75 align-self-center" src="./pictures/Sonic/sonic_run.png" alt="Sonic">
         </div>
       </div>
     </footer>
