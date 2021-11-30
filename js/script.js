@@ -1,4 +1,5 @@
-
+var firstRoll = 1;
+var rollDice;
 
 // constructor ----------------------------------------
 function Player(name, power, score) {
@@ -8,30 +9,39 @@ function Player(name, power, score) {
 }
 
 // Prototypes -----------------------------------------
-Player.prototype.display = function() {
+Player.prototype.displayPowerScore = function() {
   $('#power_'+this.name).text("Energie : " + this.power);
   $('#score_'+this.name).text("Score : " + this.score);
 };
 
 Player.prototype.roll = function() {
-  const rollDice = Math.floor(Math.random() * 6 + 1);
+  // Condition pour éviter que le joueur perde au premier coup car c'est trop déprimant.
+  // Le fait de ne pas perdre du premier coup peut alors faire l'objet d'une tactique.
+  if (firstRoll) {
+    rollDice = Math.floor(Math.random() * 5 + 2);
+  } else {
+    rollDice = Math.floor(Math.random() * 6 + 1);
+  }
+
   if (rollDice == '1') { 
     this.power = 0;
-    playerChange();
+    displayDice(rollDice);
+    playerChange(this.name);
     playSound(this.name,'loose')
   } else {
     this.power += rollDice;
+    displayDice(rollDice);
     playSound('dice','diceSound')
+    firstRoll =0;
   }
-  this.display();
-  displayDice(rollDice);
+  this.displayPowerScore();
 };
 
 Player.prototype.secure = function() {
   this.score += this.power;
   this.power = 0;
-  this.display();
-  playerChange();
+  this.displayPowerScore();
+  playerChange(this.name);
   if (this.score >= 100) { 
     playerMove(this.name, 100);
     playSound(this.name,"win")
@@ -47,7 +57,7 @@ Player.prototype.reset = function() {
   this.score = 0;
   playerMove(this.name, 0);
   playerMove(this.name, 0);
-  this.display();
+  this.displayPowerScore();
 }
 
 // object -----------------------------------------------
@@ -61,21 +71,40 @@ function startNewGame() {
   $('.popup').addClass('invisible');
   // ! couper le son en cours
   playSound('newGame','newGame');
-  // ! effecer le dés
+  $('#diceDisplay').attr('src', null);
 }
 
 
-// ! ajouter animation
+// ! ajouter une animation
 function displayDice(rollDice) {
   $('#diceDisplay').attr('src', './pictures/dice/dice'+rollDice+'.png');
+  $('#diceDisplay').animate({
+    padding : 0,
+    });
 };
 
-function playerChange() {
+function playerChange(playerName) {
   CommandId = ['#roll_roadRunner','#secure_roadRunner','#roll_sonic', '#secure_sonic'];
   CommandId.forEach(element => {
   $(element).prop('disabled', function(i, v) { return !v; });
   });
+  firstRoll = 1;
+  setTimeout (function () {
+    console.log(playerName);
+    if (playerName =='roadRunner') {
+      $('#diceDisplay').animate({
+        paddingLeft : 150,
+        paddingTop : 150,
+        }, "slow");
+    } else {
+      $('#diceDisplay').animate({
+        paddingRight : 150,
+        paddingTop : 150,
+      }, "slow");
+    }
+  },500);
 }
+  
 
 function playerMove (playerName, purcentage) {
   $('#icon_'+playerName).css('left', purcentage+'%')
@@ -92,9 +121,16 @@ function playSound(playerName,event){
   }
 }
 
-// ! fonction stopSound
-// function stopSound(playerName,event){
-// }
+function toggleSound() {
+  if ($('.sound').attr('id') == 'soundOn') {
+    $('.sound').attr('id', 'soundOff');
+    $('.sound').attr('src', './pictures/soundOff.png');
+  } else {
+    $('.sound').attr('id', 'soundOn');
+    $('.sound').attr('src', './pictures/soundOn.png');
+  };
+}
+
 
 // Game commands ----------------------------------------
 $('#roll_roadRunner').on("click", () => roadRunner.roll());
@@ -103,16 +139,4 @@ $('#roll_sonic').on("click", () => sonic.roll());
 $('#secure_sonic').on("click", () => sonic.secure());
 
 
-// fonction interupteur du son.
-function toggleSound() {
-  if ($('.sound').attr('id') == 'soundOn') {
-    $('.sound').attr('id', 'soundOff');
-    $('.sound').attr('src', './pictures/soundOff.png');
-    console.log($('.sound').attr('id'));
-  } else {
-    $('.sound').attr('id', 'soundOn');
-    $('.sound').attr('src', './pictures/soundOn.png');
-    console.log($('.sound').attr('id'));
-  };
-}
 

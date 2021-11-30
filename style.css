@@ -64,11 +64,8 @@ button {
 .dice {
   position: absolute;
   left: 44%;
-  top: 20%;
+  top: 10%;
   width: 15%;
-  /* z-index: 2; */
 }
 
-selector { 
-  cursor: none; 
-}
+
