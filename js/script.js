@@ -74,8 +74,6 @@ function startNewGame() {
   $('#diceDisplay').attr('src', null);
 }
 
-
-// ! ajouter une animation
 function displayDice(rollDice) {
   $('#diceDisplay').attr('src', './pictures/dice/dice'+rollDice+'.png');
   $('#diceDisplay').animate({
@@ -90,7 +88,6 @@ function playerChange(playerName) {
   });
   firstRoll = 1;
   setTimeout (function () {
-    console.log(playerName);
     if (playerName =='roadRunner') {
       $('#diceDisplay').animate({
         paddingLeft : 150,
@@ -112,6 +109,16 @@ function playerMove (playerName, purcentage) {
 
 function displayWinner(playerName) {
   $('#winnerVideo_'+playerName).removeClass("invisible");
+  // couper la video à la fin de la musique
+  if (playerName == 'roadRunner') {
+    setTimeout (function () {
+    $('#winnerVideo_'+playerName).addClass("invisible");
+    }, 23000);
+  } else {
+    setTimeout (function () {
+      $('#winnerVideo_'+playerName).addClass("invisible");
+      }, 17000);
+  }
 }
 
 function playSound(playerName,event){
