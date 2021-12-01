@@ -3,19 +3,20 @@
 
 
 /* Font diiférente sur les boutons mais pas sur le badge : rock_boulderregular-Font */
-@font-face {
+/* @font-face {
   font-family: 'rock_boulderregular';
   src: url('fonts/rockboulder-webfont.woff2') format('woff2'),
        url('fonts/rockboulder-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
-}
+} */
+
 button {
   all: unset;
-  font-family: 'rock_boulderregular';
+  font-family: 'Lato', sans-serif;
 }
 .badge {
-  font-family: initial;
+  font-family: 'recursive';
 }
 
 /* Positionnement image d'arrière plan */
